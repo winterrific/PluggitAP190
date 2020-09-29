@@ -18,7 +18,7 @@ Number		Pluggit_PowerOfPreheater				"Power Of Preheater [%d %%]"										<energ
 Number		Pluggit_ActiveUnitMode					"Unit Mode [MAP(Pluggit.map):ActiveUnitMode_%s]"					<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRamIdxUnitMode:register:number" }
 Number		Pluggit_SpeedLevelOfFans 				"Speed level of Fans [MAP(Pluggit.map):SpeedLevelOfFans_%s]"		<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmRomIdxSpeedLevel:register:number" }
 Number		Pluggit_CurrentUnitState				"Current Unit State [MAP(Pluggit.map):CurrentUnitState_%s]"								(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmCurrentBLState:register:number" }
-
+Number      Pluggit_WeekProgramNumber 				"Number of Week Program"		<settings>			(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmNumOfWeekProgram:register:number" }
 
 // FANS
 Number		Pluggit_SpeedFan01 						"Speed Fan 1 [%d rpm]"																	(gPluggit) 			{ channel="modbus:data:PluggitAP190:prmHALTaho1:register:number" }

@@ -69,9 +69,11 @@
 //																				|	Reset filter timer
 //		Register	:	40625 | prmWorkTime  					| UINT	| Read	|	Work time of system, in hours
 //		Register	:	40669 | prmStartExploitationDateStamp	| UINT	| Read	|	Date Stamp of the system start time in Unix time
-//
+//		Register	:	40467 | prmNumOfWeekProgram				| UINT	| Write |	NumberoftheActiveWeekProgram (forWeekProgrammode )
+//																					Write value one lower than desired week program.
+//																					For example write value 10 to select week program 11.
 
-Bridge modbus:tcp:PluggitAP190 [ host="192.168.199.70", port=502, id=2 ] {
+Bridge modbus:tcp:PluggitAP190 [ host="192.168.100.133", port=502, id=2 ] {
 
 	//-------------------------------------------------------------------------
 	//	Status		:	OK
@@ -226,5 +228,12 @@ Bridge modbus:tcp:PluggitAP190 [ host="192.168.199.70", port=502, id=2 ] {
 	Bridge poller prmStartExploitationDateStamp	[ start=668,		length=4,	refresh=5000,	type="holding" ] {
 		Thing data register						[ readStart="668",	readValueType="uint32_swap" ]
 		Thing data registerDateTime				[ readStart="668",	readValueType="uint32_swap", readTransform="JS(EpocheToDateTime.js)" ]
+	}
+
+	//-------------------------------------------------------------------------
+	//	Status		:
+	//
+	Bridge poller prmNumOfWeekProgram			[ start=466,		length=2,	refresh=5000,	type="holding" ] {
+		Thing data register						[ readStart="466",	readValueType="uint32_swap", writeStart="466", writeValueType="uint32_swap", writeType="holding" ]
 	}
 }
